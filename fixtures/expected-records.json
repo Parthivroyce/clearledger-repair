@@ -1,0 +1,34 @@
+{
+  "summary": {
+    "customer_count": 3,
+    "invoice_count": 9,
+    "payment_count": 5,
+    "open_count": 7,
+    "paid_count": 2,
+    "outstanding": 3698.19,
+    "unmatched_count": 1
+  },
+  "customers": [
+    {"id": "HARBOR", "name": "Harbor Logistics"},
+    {"id": "MAPLE", "name": "Maple & Co"},
+    {"id": "NORTH", "name": "North Services"}
+  ],
+  "invoices": [
+    {"id": 1, "customer_id": "HARBOR", "invoice_number": "KEEP-700", "amount": 500.0, "due_date": "2026-11-01", "paid": 500.0, "balance": 0.0, "status": "paid"},
+    {"id": 2, "customer_id": "HARBOR", "invoice_number": "KEEP-701", "amount": 850.5, "due_date": "2026-11-05", "paid": 0.0, "balance": 850.5, "status": "open"},
+    {"id": 3, "customer_id": "MAPLE", "invoice_number": "KEEP-702", "amount": 350.0, "due_date": "2026-11-02", "paid": 350.0, "balance": 0.0, "status": "paid"},
+    {"id": 4, "customer_id": "MAPLE", "invoice_number": "KEEP-703", "amount": 620.0, "due_date": "2026-11-10", "paid": 200.0, "balance": 420.0, "status": "open"},
+    {"id": 5, "customer_id": "MAPLE", "invoice_number": "KEEP-704", "amount": 427.69, "due_date": "2026-11-12", "paid": 0.0, "balance": 427.69, "status": "open"},
+    {"id": 6, "customer_id": "NORTH", "invoice_number": "KEEP-705", "amount": 900.0, "due_date": "2026-11-15", "paid": 100.0, "balance": 800.0, "status": "open"},
+    {"id": 7, "customer_id": "NORTH", "invoice_number": "KEEP-706", "amount": 500.0, "due_date": "2026-11-20", "paid": 0.0, "balance": 500.0, "status": "open"},
+    {"id": 8, "customer_id": "NORTH", "invoice_number": "KEEP-707", "amount": 400.0, "due_date": "2026-11-22", "paid": 0.0, "balance": 400.0, "status": "open"},
+    {"id": 9, "customer_id": "HARBOR", "invoice_number": "KEEP-708", "amount": 300.0, "due_date": "2026-11-25", "paid": 0.0, "balance": 300.0, "status": "open"}
+  ],
+  "payments": [
+    {"payment_id": "KEEP-P1", "customer_id": "HARBOR", "invoice_number": "KEEP-700", "amount": 500.0, "invoice_id": 1},
+    {"payment_id": "KEEP-P2", "customer_id": "MAPLE", "invoice_number": "KEEP-702", "amount": 350.0, "invoice_id": 3},
+    {"payment_id": "KEEP-P3", "customer_id": "MAPLE", "invoice_number": "KEEP-703", "amount": 200.0, "invoice_id": 4},
+    {"payment_id": "KEEP-P4", "customer_id": "NORTH", "invoice_number": "KEEP-705", "amount": 100.0, "invoice_id": 6},
+    {"payment_id": "KEEP-U1", "customer_id": "HARBOR", "invoice_number": "KEEP-NONEXISTENT", "amount": 125.0, "invoice_id": null}
+  ]
+}

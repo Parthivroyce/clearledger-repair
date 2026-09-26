@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClearLedger | Invoice & Payment Register</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <h1>ClearLedger</h1>
+        <p class="tagline">Local Accounts Receivable Register</p>
+      </div>
+      <div class="actions">
+        <a href="/api/export" class="btn btn-secondary" download="invoices.csv">Export CSV</a>
+      </div>
+    </header>
+
+    <!-- Overview summary cards -->
+    <section class="summary-cards">
+      <div class="card">
+        <span class="card-label">Total Invoices</span>
+        <span class="card-value" id="totalInvoices">-</span>
+      </div>
+      <div class="card">
+        <span class="card-label">Open Invoices</span>
+        <span class="card-value" id="openInvoices">-</span>
+      </div>
+      <div class="card card-highlight">
+        <span class="card-label">Total Outstanding</span>
+        <span class="card-value" id="totalOutstanding">-</span>
+      </div>
+    </section>
+
+    <!-- Import forms -->
+    <section class="import-section">
+      <div class="import-card">
+        <h3>Import Invoices CSV</h3>
+        <p class="help-text">Format: <code>customer_id,invoice_number,amount,due_date</code></p>
+        <textarea id="invoiceCsv" rows="3" placeholder="customer_id,invoice_number,amount,due_date&#10;HARBOR,INV-901,150.00,2026-11-30"></textarea>
+        <div class="import-btn-row">
+          <input type="file" id="invoiceFileInput" accept=".csv" class="file-input">
+          <button id="btnImportInvoices" class="btn btn-primary">Import Invoices</button>
+        </div>
+        <div id="invoiceFeedback" class="feedback"></div>
+      </div>
+
+      <div class="import-card">
+        <h3>Import Payments CSV</h3>
+        <p class="help-text">Format: <code>payment_id,customer_id,invoice_number,amount</code></p>
+        <textarea id="paymentCsv" rows="3" placeholder="payment_id,customer_id,invoice_number,amount&#10;PAY-901,HARBOR,INV-901,150.00"></textarea>
+        <div class="import-btn-row">
+          <input type="file" id="paymentFileInput" accept=".csv" class="file-input">
+          <button id="btnImportPayments" class="btn btn-primary">Import Payments</button>
+        </div>
+        <div id="paymentFeedback" class="feedback"></div>
+      </div>
+    </section>
+
+    <!-- Invoices Table -->
+    <section class="register-section">
+      <div class="register-header">
+        <h2>Invoices Register</h2>
+        <div class="filter-group">
+          <button class="filter-btn active" data-status="all">All</button>
+          <button class="filter-btn" data-status="open">Open</button>
+          <button class="filter-btn" data-status="paid">Paid</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table" id="invoicesTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Invoice #</th>
+              <th>Amount (INR)</th>
+              <th>Due Date</th>
+              <th>Paid (INR)</th>
+              <th>Balance (INR)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="invoicesBody">
+            <tr><td colspan="8" class="text-center">Loading invoices...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Unmatched payments section -->
+    <section class="unmatched-section">
+      <h3>Unmatched Payments (<span id="unmatchedCount">0</span>)</h3>
+      <div class="table-responsive">
+        <table class="table" id="unmatchedTable">
+          <thead>
+            <tr>
+              <th>Payment ID</th>
+              <th>Customer</th>
+              <th>Referenced Invoice</th>
+              <th>Amount (INR)</th>
+            </tr>
+          </thead>
+          <tbody id="unmatchedBody">
+            <tr><td colspan="4" class="text-center">No unmatched payments.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

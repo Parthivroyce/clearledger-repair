@@ -1,0 +1,3 @@
+payment_id,customer_id,invoice_number,amount
+PAY-901,HARBOR,INV-901,150.00
+PAY-902,MAPLE,INV-902,100.00

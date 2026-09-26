@@ -1,0 +1,4 @@
+customer_id,invoice_number,amount,due_date
+HARBOR,INV-901,150.00,2026-11-30
+MAPLE,INV-902,320.50,2026-12-05
+NORTH,INV-903,75.00,2026-12-10
